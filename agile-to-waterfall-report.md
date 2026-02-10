@@ -1,6 +1,6 @@
 # The Agentic Waterfall: How the AI Industry Is Regressing Software Development
 
-**By Muhammadali Nazarov**
+**By Muhammadali Nazarov** — [LinkedIn](https://www.linkedin.com/in/nazarov33/)
 
 ---
 
