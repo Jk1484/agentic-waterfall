@@ -260,17 +260,21 @@ There is a third case: domain experts — doctors, lawyers, financial analysts �
 
 ## The "AI-Native SDLC" Fallacy
 
-Platforms like 8090 Software Factory market themselves as "AI-native SDLC orchestration." Their pipeline consists of:
+The industry push toward async agents does not just change how teams work — it creates demand for tooling that supports the new methodology. When the workflow becomes spec → agent → review, teams need platforms to manage specs, orchestrate agents, and structure the handoffs. The market responds. Tools emerge that formalize and automate the Waterfall pipeline, repackaged under AI-native branding.
 
-- **Refinery:** Create a detailed PRD (Requirements)
-- **Foundry:** Expand PRD into a structured Blueprint (Design)
-- **Planner:** Generate Work Orders with implementation plans (Implementation Planning)
-- **Execution:** AI executes the work orders (Implementation)
-- **Validator:** Collect user feedback, create tasks (Verification)
+Consider the pattern that is becoming standard across these platforms. A typical "AI-native SDLC" pipeline looks like this:
 
-This is the Waterfall methodology with industrial naming. Requirements → Design → Plan → Build → Validate. The sequential, document-heavy, plan-then-execute structure is identical to what the industry rejected twenty years ago.
+1. Create a detailed PRD (Requirements)
+2. Expand the PRD into a structured design document (Design)
+3. Generate implementation plans from the design (Planning)
+4. AI executes the plans autonomously (Implementation)
+5. Collect feedback, create follow-up tasks (Verification)
 
-Their own documentation acknowledges that "development itself has never been the bottleneck" and that teams struggle with deciding "what to build, why, and how it fits into the larger system." Their solution is to make the planning phase heavier — more PRDs, more Blueprints, more Feature Nodes, more Work Orders — before any code is written. This is the foundational Waterfall assumption: if we plan better upfront, execution will go smoothly. Agile exists because that assumption is false. Requirements are discovered during implementation, not before it.
+Requirements → Design → Plan → Build → Validate. This is the Waterfall methodology — the sequential, document-heavy, plan-then-execute structure the industry spent twenty years learning to abandon.
+
+8090 Software Factory is one example of this pattern in practice. Their pipeline — Refinery, Foundry, Planner, Execution, Validator — maps directly to these Waterfall phases, with industrial naming. Their own documentation acknowledges that "development itself has never been the bottleneck" and that teams struggle with deciding "what to build, why, and how it fits into the larger system." The solution they offer is to make the planning phase heavier — more PRDs, more Blueprints, more Work Orders — before any code is written.
+
+This is not a critique of any individual platform. These tools exist because the industry is demanding them. The async agent model requires heavy upfront specification, and platforms are building exactly what the model needs. But the model itself rests on the foundational Waterfall assumption: if we plan better upfront, execution will go smoothly. Agile exists because that assumption is false. Requirements are discovered during implementation, not before it. The tooling is not causing the regression — it is a symptom of it.
 
 ## The Parallel Agent Fallacy
 
