@@ -78,6 +78,17 @@ Leadership across the industry — from startups to Microsoft to dedicated "AI-n
 
 The pitch is compelling. The structural reality is not.
 
+This is not a hypothetical characterization. The industry's own words describe the push:
+
+> "It's an agentic experience; it's completely asynchronous to you. You could be doing one task, and Copilot could be executing on five others, and that's really the value."
+> — GitHub VP, VentureBeat (October 2025)
+
+> "The Copilot coding agent converts specifications to production code in minutes."
+> — Carvana SVP, GitHub Press Release (May 2025)
+
+> "Developers to have their own agent-driven team, all working in parallel to amplify their work."
+> — EY DevEx Lead, GitHub Press Release (May 2025)
+
 ## The Degradation Path
 
 To understand why the regression happens, compare the three processes side by side:
