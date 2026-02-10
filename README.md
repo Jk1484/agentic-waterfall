@@ -36,7 +36,7 @@ Each term is strictly positive. The inequality holds by construction.
 
 ## Read the Report
 
-→ [**agile-to-waterfall-report.md**](agile-to-waterfall-report.md)
+→ [**report.md**](report.md)
 
 ## License
 
