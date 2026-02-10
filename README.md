@@ -24,15 +24,11 @@ The full argument is formalized as an inequality:
 Each term is strictly positive. The inequality holds by construction.
 
 ## Key Findings
-
-- Async agents force Waterfall by structural necessity
-- Waterfall + AI is strictly slower than Agile + sync AI
+- Async agents force Waterfall by structural necessity — and Waterfall is strictly slower than Agile + sync AI
 - Every improvement to async tooling converges back toward sync development
-- The only way to make Waterfall faster is to remove human review — producing enterprise-scale vibe code
-- The "Product Builder" is a developer under a different name
-- AI improvement does not resolve the structural problem
-- Human attention cannot be parallelized across multiple agents
-- Pair-programming was always the best methodology — AI just made it affordable
+- The only way to make async faster is to remove human review — producing enterprise-scale vibe code
+- The "Product Builder" is a developer under a different name — in the Agentic Waterfall
+- The industry is destroying the junior-to-senior pipeline it depends on — for a workflow that's strictly slower
 
 ## Read the Report
 
