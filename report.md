@@ -4,6 +4,10 @@
 
 ---
 
+> **How to read this report:** This is a deductive argument. It derives all conclusions from four axioms stated in Section 1. Each axiom is either true by definition or established cognitive science. All conclusions follow by construction.
+
+---
+
 ## Table of Contents
 
 1. The Core Argument
@@ -39,15 +43,17 @@ This entire report reduces to one structural proof:
 >
 > **Code created without GI in the loop = vibe code**
 
-A human developer pair-programming with AI has GI in the loop during creation. The code is reviewed as it is written. The PR can merge without further review. This is not vibe code.
+A human developer pair-programming with AI (**synchronous** — the developer and AI work together in real time) has GI in the loop during creation. The developer sees every line, can stop the AI, redirect, and course-correct — the code is reviewed as it is written. The PR can merge without further review. This is not vibe code.
 
-An AI agent coding autonomously does not have GI in the loop. The code is unreviewed at creation. There are only two options:
+An AI agent coding autonomously (**asynchronous** — the agent works alone, the developer reviews after) does not have GI in the loop. The code is unreviewed at creation. There are only two options:
 
 > **Option A:** Accept without human review → vibe code
 >
 > **Option B:** Add human review after creation → Waterfall → slower than having GI in the loop during creation (Agile)
 
-There is no Option C. This is proven by the following inequality:
+There is no Option C. This is proven by the following inequality.
+
+The cognitive work is the same in both workflows — the developer must understand the task and verify the code is correct. In sync, this happens during coding. In async, this same work is split into two separate phases — spec writing and review — plus additional overhead:
 
 > **Async workflow = Sync workflow + Formalization Δ + Context Reload + Feedback Latency + Tooling Δ**
 
@@ -61,7 +67,9 @@ Each term is strictly positive, grounded in definitions or established cognitive
 >
 > **Axiom 4 — Tooling delta:** A PR diff interface provides fewer capabilities than a full IDE with debugger, terminal, and real-time visibility. No one argues a diff viewer exceeds a full IDE.
 
-To falsify this inequality, you must show that at least one axiom is wrong. Three of the four terms cannot even theoretically reach zero without converting the async workflow into a sync workflow — which concedes the argument.
+This inequality assumes equivalent review quality — the developer does the same thorough verification in both workflows. That is the only fair comparison. The only way to make async faster than this inequality predicts is to reduce review quality — which produces vibe code. This is the tradeoff: match sync's quality and be slower, or sacrifice quality to be faster. There is no configuration that is both faster and equal quality. The Tradeoff Triangle section below maps this out in detail.
+
+To falsify this inequality, you must show that at least one axiom is wrong. Three of the four terms cannot even theoretically reach zero without converting the async workflow into a sync workflow — which concedes the argument. The Degradation Path section below proves each axiom in detail with examples.
 
 Every workflow in the industry is either Option A or Option B or a combination of them. There is no configuration where autonomous AI agents produce non-vibe-code without making the process slower than synchronous human + AI development.
 
@@ -82,7 +90,7 @@ The industry is making tradeoffs between three things: cost, quality, and speed.
 
 False assumption: we can replace developers' output with async agents.
 
-> Fewer developers + async agents = high quality + slow + lower throughput. The human review bottleneck makes it slower, not faster.
+> Fewer developers + async agents = high quality + slow + same or lower throughput. The review bottleneck means agents don't restore the throughput lost by cutting developers.
 
 **Step 4 — To keep up with throughput, we trade quality for speed.**
 
@@ -126,6 +134,11 @@ This is not a hypothetical characterization. The industry's own words describe t
 
 > "Developers to have their own agent-driven team, all working in parallel to amplify their work."
 > — EY DevEx Lead, GitHub Press Release (May 2025)
+
+> "We are living through an agent boom, and now massive volumes of code are being generated faster than any human could reasonably understand."
+> — Thomas Dohmke, Former GitHub CEO, Entire Press Release (February 2026)
+
+The former CEO of GitHub — the platform that hosts the industry's code — is building a $300M-valued startup specifically to help developers deal with the volume of agent-produced code. Code production was never the bottleneck. Understanding whether the code is right is. The tooling to manage this problem is a symptom, not a solution — it exists because async agents create a review burden that does not exist in sync development.
 
 ## The Degradation Path
 
@@ -505,6 +518,10 @@ For the agent to produce quality output overnight, you need to write detailed sp
 **"Linters, static analysis, and CI/CD can catch issues before human review."**
 
 These tools already exist in Row 3 (Agile + sync AI). They are not unique to the agent workflow. Adding deterministic checks to agent output reduces the human review burden, but if you are trying to eliminate human review entirely, you arrive at Row 6 — AI codes, automated checks review. That is vibe code with a CI pipeline.
+
+**"With 100% test coverage, acceptance criteria verification, and deterministic validation, human review becomes unnecessary."**
+
+Deterministic tools can verify behavior — they cannot verify correctness of intent. A test tells you the function returns 200. It does not tell you it is the wrong function. Acceptance criteria confirm the feature exists. They do not confirm the feature is designed correctly, handles edge cases the criteria didn't anticipate, or fits the larger architecture. This is Row 6 in the matrix — AI codes, automated processes review. It is vibe code with a CI pipeline. The history of safety-critical software (such as DO-178B in avionics) confirms this: even in domains with 100% coverage and MC/DC requirements, the formalized verification works because humans with general intelligence reviewed the requirements, designed the test cases, and verified the traceability. The deterministic layer replaced code-level review, not general intelligence — it moved GI to the requirements level. And the result is, by their own description, "boring, slow and costly" — which proves, rather than challenges, the report's inequality.
 
 **"Vibe code is fine for prototypes and throwaway work."**
 
