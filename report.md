@@ -7,26 +7,27 @@
 ## Table of Contents
 
 1. The Core Argument
-2. Summary
-3. The Current State
-4. The Industry Push
-5. The Degradation Path
-6. The Tooling Regression
-7. The Exhaustive Matrix
-8. Two Cases of Review
-9. The Convergence Trap
-10. The "Product Builder" Is a Developer
-11. The "AI-Native SDLC" Fallacy
-12. The Parallel Agent Fallacy
-13. The Asymmetric Review Argument
-14. The Context Gap: Why AI Cannot Accumulate Codebase Knowledge
-15. Why Human Developers Cannot Be Replaced by AI Agents
-16. The Junior Pipeline Problem
-17. The Vicious Cycle
-18. Common Counterarguments
-19. Q&A — Anticipated Objections
-20. Key Findings
-21. Conclusion
+2. The Tradeoff Triangle
+3. Summary
+4. The Current State
+5. The Industry Push
+6. The Degradation Path
+7. The Tooling Regression
+8. The Exhaustive Matrix
+9. Two Cases of Review
+10. The Convergence Trap
+11. The "Product Builder" Is a Developer
+12. The "AI-Native SDLC" Fallacy
+13. The Parallel Agent Fallacy
+14. The Asymmetric Review Argument
+15. The Context Gap: Why AI Cannot Accumulate Codebase Knowledge
+16. Why Human Developers Cannot Be Replaced by AI Agents
+17. The Junior Pipeline Problem
+18. The Vicious Cycle
+19. Common Counterarguments
+20. Q&A — Anticipated Objections
+21. Key Findings
+22. Conclusion
 
 ---
 
@@ -46,11 +47,50 @@ An AI agent coding autonomously does not have GI in the loop. The code is unrevi
 >
 > **Option B:** Add human review after creation → Waterfall → slower than having GI in the loop during creation (Agile)
 
-There is no Option C. Every workflow in the industry is one of these two options or a combination of them. There is no configuration where autonomous AI agents produce non-vibe-code without making the process slower than synchronous human + AI development.
+There is no Option C. This is proven by the following inequality:
+
+> **Async workflow = Sync workflow + Formalization Δ + Context Reload + Feedback Latency + Tooling Δ**
+
+Each term is strictly positive, grounded in definitions or established cognitive science:
+
+> **Axiom 1 — Formalization cost:** Async requires predictive specification upfront. Sync requires only reactive direction. Prediction always costs more than reaction, because prediction requires modeling failure modes that reaction handles for free.
+>
+> **Axiom 2 — Context reload:** Splitting work into separate phases forces the developer to re-engage with the task after a gap. Context-switching has non-zero cost. This is established cognitive science.
+>
+> **Axiom 3 — Feedback latency:** Async feedback is slower than sync feedback. This is true by definition — it is what async means.
+>
+> **Axiom 4 — Tooling delta:** A PR diff interface provides fewer capabilities than a full IDE with debugger, terminal, and real-time visibility. No one argues a diff viewer exceeds a full IDE.
+
+To falsify this inequality, you must show that at least one axiom is wrong. Three of the four terms cannot even theoretically reach zero without converting the async workflow into a sync workflow — which concedes the argument.
+
+Every workflow in the industry is either Option A or Option B or a combination of them. There is no configuration where autonomous AI agents produce non-vibe-code without making the process slower than synchronous human + AI development.
 
 This is not an emotional argument about replacing humans with robots. It is a structural fact: replacing GI with no-GI in the coding loop either produces unreviewed code or forces a slower methodology. The rest of this report proves this in detail.
 
----
+## The Tradeoff Triangle
+
+The industry is making tradeoffs between three things: cost, quality, and speed. You can optimize for two, not all three. The regression follows a predictable path:
+
+**Step 1 — The optimal state.**
+> Developers + sync agents = high quality + fast + high throughput.
+
+**Step 2 — We cut cost.**
+
+> Fewer developers + sync agents = high quality + fast + lower throughput.
+
+**Step 3 — We want the same throughput.**
+
+False assumption: we can replace developers' output with async agents.
+
+> Fewer developers + async agents = high quality + slow + lower throughput. The human review bottleneck makes it slower, not faster.
+
+**Step 4 — To keep up with throughput, we trade quality for speed.**
+
+> Fewer developers + async agents = low quality + fast + high throughput.
+
+This is vibe code.
+
+Sync pair-programming with AI Agent is the only configuration that doesn't force a tradeoff between speed and quality. Every other configuration is a consequence of cutting cost and trying to compensate with async agents.
 
 ## Summary
 
@@ -63,8 +103,6 @@ A critical distinction must be made between two types of AI agents:
 **Asynchronous agents** operate independently. They receive a task or spec, execute autonomously — whether locally or in the cloud — and submit a finished artifact (usually a pull request) for review after the fact. The developer cannot see what the agent is doing, cannot interject, and must review the output as a separate phase. This is Waterfall by structure.
 
 This report is not an argument against AI in development. Synchronous agents are a clear improvement — they make developers faster while preserving review quality and Agile methodology. The argument is against the industry's push toward asynchronous agents as the default workflow, which forces a regression from Agile to Waterfall regardless of how the tooling is configured.
-
----
 
 ## The Current State
 
